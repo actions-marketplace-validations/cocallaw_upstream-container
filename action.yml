@@ -1,0 +1,32 @@
+name: 'Upstream Container Check'
+description: 'Check if the upstream container has changed'
+inputs:
+  docker-username:
+    description: 'Docker username'
+    required: true
+  docker-pat:
+    description: 'Docker personal access token'
+    required: true
+  upstream-image:
+    description: 'Upstream image to check'
+    required: true
+  current-tag:
+    description: 'Current tag to check'
+    required: true
+  tag-regex:
+    description: 'Regular expression to filter tags'
+    required: true
+outputs:
+  changed:
+    description: 'True or False if the upstream image has changed'
+  tag:
+    description: 'The most recent tag of the upstream image'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.docker-username }}
+    - ${{ inputs.docker-pat }}
+    - ${{ inputs.upstream-image }}
+    - ${{ inputs.current-tag }}
+    - ${{ inputs.tag-regex }}

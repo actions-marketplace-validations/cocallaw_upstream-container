@@ -30,3 +30,6 @@ runs:
     - ${{ inputs.upstream-image }}
     - ${{ inputs.current-tag }}
     - ${{ inputs.tag-regex }}
+branding:
+  icon: 'box'
+  color: 'yellow'
